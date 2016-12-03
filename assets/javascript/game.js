@@ -49,21 +49,26 @@ function printScore(){
 // Code snippet #3 -> Getting words from object array to guess against
 wordArrayIndex = Math.floor(Math.random() * wordArray.length);
 currentWord = wordArray[wordArrayIndex][0];
-var lettersOfWordArray = currentWord.toCharArray(); // converting current word to array for rest of code (Code snippet #6)
+var lettersOfWordArray = Array.from(currentWord); // converting current word to array for rest of code (Code snippet #6)
 // If user gets answer, 
 document.getElementById("pic").innerHTML = wordArray[wordArrayIndex][1];
 document.getElementById("description").innerHTML = wordArray[wordArrayIndex][2];
 
 
 
-// Code snippet #5 -> Checking if userInput is in currentWord
+// Code snippet #5 -> For when userInput is a letter in currentWord
 if(lettersOfWordArray.indexOf(userInput) != -1){
-	// rest of code to find where in the word the letter is, and display it in place of blankword
+	// array to store indices where letter exists in word
+	var replaceAtIndex = [];
+	// code to find where in the word the letter is and store it in index array
 	for(var i=0; i<lettersOfWordArray.length; i++){
-		replaceAtIndex = lettersOfWordArray.indexOf(userInput);
+		if(lettersOfWordArray[i] === userInput){
+			replaceAtIndex.push(i);
+		}
 		// run function to replace userInput wherever necessary in blankWord
-		showBlank(blankWord,replaceAtIndex,userInput);
+		blankWord = replaceBlank(blankWord,replaceAtIndex,userInput);
 	}
+	printBlankNow(blankWord);
 	guesses--;
 	printGuessesLeft();
 }
@@ -82,26 +87,27 @@ function showBlank(){
 	
 }
 
-// Code snippet #7?? Displaying partial word (overriding showBlank() to include args)
-function showBlank(blankWord,index,letter){
-	for (var i=0; i<blankWord.length; i++){
-		if(i == index){
-			blankWord.push(letter);
-		}
-		else{
-			blankWord.push("_");
+// Code snippet #7 -> Displaying partial word (overriding showBlank() to include args)
+function replaceBlank(blankWord,index,letter){
+	for(var i=0; i<index.length; i++){
+		for (var j=0; j<blankWord.length; j++){
+			if(j == index[i]){
+				blankWord[j] = letter;
+			}
 		}
 	}
-	printBlankNow(blankWord);
+	// send altered blankWord back
+	return blankWord;
 }
 
 // function to prepare a text printable to html everytime blankWord is updated with user's correctly guessed letter
 function printBlankNow(blankWord){
+	var printableBlank = "";
 	for (var i=0; i<blankWord.length; i++){
 		printableBlank = printableBlank + " " + blankWord[i];
-		// inserting partial word into html 
-		document.getElementById("word").innerHTML = printableBlank;
 	}
+	// inserting partial word into html 
+	document.getElementById("word").innerHTML = printableBlank;
 }
 
 // Code snippet #7 -> Displaying partial word
