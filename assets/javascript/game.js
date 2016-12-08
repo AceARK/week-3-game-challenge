@@ -1,13 +1,52 @@
 
 // *** Variable declarations ***
 
-var wordObject = {
-	word1 : ["dumbledore", "pic1.jpg", "tweet tweet whistle"],
-	word2 : ["hagrid", "pic2.jpg", "whistle tweet"],
-	word3 : ["hedwig", "pic3.jpg", "tweeeeeeeeeeeet"]
+var wordObjectEasy = {
+	
+	word1 : ["mutant", "pic2.jpg", "whistle tweet"],
+	word2 : ["sentinel", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word3 : ["wolverine", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word4 : ["cyclops", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word5 : ["magneto", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word6 : ["juggernaut", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word7 : ["adamantium", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word8 : ["mystique", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word9 : ["sabretooth", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word10 : ["jean grey", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word11 : ["professor x", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word12 : ["beast", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word13 : ["nightcrawler", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word14 : ["telepathy", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word15 : ["telekinesis", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word16 : ["phoenix", "pic3.jpg", "tweeeeeeeeeeeet"]
+};
+
+var wordObjectHard = {
+	word1 : ["phoenix force", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word2 : ["hank mccoy", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word3 : ["teleportation", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word4 : ["emma frost", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word5 : ["archangel", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word6 : ["james logan", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word7 : ["scott summers", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word8 : ["soulsword", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word9 : ["ororo monroe", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word10 : ["kurt wagner", "pic3.jpg", "tweeeeeeeeeeeet"],
+	word11 : ["kitty pryde", "pic1.jpg", "tweet tweet whistle"],
+	word12 : ["eric lehnsherr", "pic1.jpg", "tweet tweet whistle"],
+	word13 : ["raven", "pic1.jpg", "tweet tweet whistle"],
+	word14 : ["marvel girl", "pic1.jpg", "blahblahblah"]
 };
 // array to store indices of wordObject
-var wordArray = [wordObject.word1, wordObject.word2, wordObject.word3];
+var wordArray = [];
+
+// To store words from wordObject dynamically
+for(var key in wordObjectEasy){
+	console.log("wordObjectEasy - " + wordObjectEasy[key]);
+	wordArray.push(wordObjectEasy[key][0]);
+	}
+
+console.log("wordarray " + wordArray);
 var blankWord = []; // variable to hold blank word for initial display
 var guessesLeft = 10;
 var wins = 0;
@@ -23,6 +62,34 @@ var arrayOfLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o
 // *** Hangman logic begins ***
 
 $(document).ready(function(event){
+
+	// Changing game mode to easy
+	$(".easy").on("click", function(){
+		for(var key in wordObjectEasy){
+		console.log("wordObjectEasy - " + wordObjectEasy[key]);
+		wordArray.push(wordObjectEasy[key][0]);
+		}
+		reset();
+		lettersOfWordArray = getNewWord();
+		showBlank(lettersOfWordArray);
+		console.log("currentWord - " + currentWord);
+	});
+	// Changing game mode to hard
+	$(".hard").on("click", function(){
+		for(var key in wordObjectHard){
+		console.log("wordObjectHard - " + wordObjectHard[key]);
+		wordArray.push(wordObjectHard[key][0]);
+		}
+		reset();
+		lettersOfWordArray = getNewWord();
+		showBlank(lettersOfWordArray);
+		console.log("currentWord - " + currentWord);
+	});
+
+	// Getting hints on hint button click
+	// $(".hint").on("click", function(){
+	// 	$("#message").html(wordArray[wordArrayIndex].); //////// code to display hints i.e wordObject[2]
+	// });
 
 	// Pseudocode ->
 	// 1. Computer chooses word
@@ -49,7 +116,7 @@ $(document).ready(function(event){
 		}
 		// User input is an alphabet
 			// Check if it has already been pressed by the user. If yes, return and wait for another key press
-			else if (usedLettersArray.indexOf(userInput) != -1) { /////////// BUG -> ALLOWING ALREADY TYPED LETTERS AND SPLICING FROM END OF ARRAY OF LETTERS ////////////////
+			else if (usedLettersArray.indexOf(userInput) != -1) { 
 				return;
 			}
 			// UserInput is not one of previously typed letters
@@ -59,7 +126,9 @@ $(document).ready(function(event){
 			// 4. Letters used updated
 
 				console.log("Array of letters: " + arrayOfLetters);
-				usedLettersArray.push(arrayOfLetters.splice(arrayOfLetters.indexOf(userInput),1)); // code to remove userInput from list of arrayOfLetters and add to usedLettersArray
+				arrayOfLetters.splice(arrayOfLetters.indexOf(userInput),1); 
+				usedLettersArray.push(userInput);
+				// code to remove userInput from list of arrayOfLetters and add to usedLettersArray
 				console.log("Array of letters after splice: " + arrayOfLetters);
 				console.log("Alphabets after splice: " + alphabets);
 				document.getElementById("guessedLetters").innerHTML = usedLettersArray.toString().toUpperCase(); // printing used letters to html
@@ -99,10 +168,7 @@ $(document).ready(function(event){
 						printWins(wins);
 						reset();
 						printGuessesLeft(guessesLeft);
-						console.log("guesses " + guessesLeft);
-						// If user gets answer, 
-						document.getElementById("pic").innerHTML = wordArray[wordArrayIndex][1];
-						document.getElementById("description").innerHTML = wordArray[wordArrayIndex][2];
+						console.log("guesses " + guessesLeft); 	// see if required (unlikely when tested) -> code to check if easy or hard mode, and supply wordobject to getNewWord()
 						// get new word and print blanks for it
 						lettersOfWordArray = getNewWord();
 						console.log("Current word: "+ currentWord);
@@ -136,7 +202,7 @@ $(document).ready(function(event){
 						printLosses(losses);
 						reset();
 						printGuessesLeft(guessesLeft);
-						console.log("Guesses " + guessesLeft);
+						console.log("Guesses " + guessesLeft);		// see if required -> code to check if easy or hard mode, and supply wordobject to getNewWord()
 						// get new word and print blanks for it
 						lettersOfWordArray = getNewWord();
 						console.log("Current word: "+ currentWord);
@@ -170,7 +236,7 @@ function reset(){
 // Function to get words from object array to guess against
 function getNewWord(){
 	wordArrayIndex = Math.floor(Math.random() * wordArray.length);
-	currentWord = wordArray[wordArrayIndex][0];
+	currentWord = wordArray[wordArrayIndex];
 	var lettersOfWordArray = Array.from(currentWord); // converting current word to array for rest of code (Code snippet #6)
 	return lettersOfWordArray;
 }
@@ -178,7 +244,12 @@ function getNewWord(){
 // Function to show blanks corresponding to no. of letters in word to guess 
 function showBlank(lettersOfWordArray){
 	for (var i=0; i<lettersOfWordArray.length; i++){
-		blankWord.push("_");
+		if(lettersOfWordArray[i] == " "){
+			blankWord.push(" ");
+		}
+		else {
+			blankWord.push("_");
+		}
 	}
 	printBlankNow(blankWord);
 	

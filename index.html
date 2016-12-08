@@ -3,16 +3,79 @@
 <head>
 	<title>Hangman Game</title>
 	<script src="https://code.jquery.com/jquery.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<script type="text/javascript" src="assets/javascript/game.js"></script>
 </head>
 <body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8"><h1 id="heading">Hangman - <span id="theme">X-Men Edition</span></h1></div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 col-md-offset-2">
+				<div class="rules">
+					<ol class="ruleSet">
+						<li>Choose game mode. Default is 'Easy'.</li>
+						<li>Enter letters using keyboard.</li>
+						<li>For hints, click 'Hint' button.</li>
+						<li>To reset game, click 'Reset'</li>
+					</ol>
+				</div>
+			</div>
+			<div class="col-md-3 text-center">
+				<div class="score">
+					<span>Wins: 	<span id = "wins"></span> </span>
+					<br>
+					<span>Losses: 	<span id = "losses"></span></span>
+				</div>
+			</div>
+		</div>
 
-Word: 	<p id = "word"></p>
-Guesses remaining: 	<p id = "guessesLeft"></p>
-Wins: 	<p id = "wins"></p>
-Losses: 	<p id = "losses"></p>
-Letters used: 	<p id = "guessedLetters"></p>
+		<!-- TODO ->
+		Check JS file for Reset, and Hint button functionalities
+		Also test implementation of Hard/ Easy mode after game lost
+		HTML placement of divs and 
+		CSS for each div -->
+		
+		<div class="row text-center">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="gameStats">
+					Word: 	<p id = "word"></p>
+					Guesses remaining: 	<p id = "guessesLeft"></p>
+					Letters used: 	<p id = "guessedLetters"></p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="row gameMode">
+					<button class="btn btn-info btn-large easy">Easy Mode</button>
+				</div>
+				<div class="row gameMode">
+					<button class="btn btn-info btn-large hard">Hard Mode</button>
+				</div>
+			</div>
+		</div>
 
+		<!-- <div class="rss">
+	  		<input type="checkbox" id="buttonThree" />
+	  		<label for="buttonThree"> <!-- class="attention" -->
+	    		<!-- <i></i>
+	  		</label>
+		</div> --> <!-- /rss -->
+		
+		<div class="row text-center">
+			<div class="col-md-12">
+				<div class="control">
+					<button class="btn btn-info btn-large hint" data-toggle="collapse" data-target="#hint">Hint</button>
+					<button class="btn btn-info btn-large reset">Reset</button>
+				</div>
+			</div>
+		</div>
+		
+		<div id="hint" class="collapse">
+			<p id="hintLine">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+		</div>
+	</div>
 </body>
 </html>
