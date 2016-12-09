@@ -71,7 +71,7 @@ $(document).ready(function(event) {
         showBlank(lettersOfWordArray);
         $("#info").queue(function(){
 			$("#info").html("Mode change detected");
-			setTimeout(function(){$("#info").html("Game mode: 'Easy'")}, 1000);
+			setTimeout(function(){$("#info").html("Game mode: 'Easy'")}, 1500);
 			$("#info").dequeue();
 		});
         console.log("currentWord - " + currentWord);
@@ -87,8 +87,8 @@ $(document).ready(function(event) {
         showBlank(lettersOfWordArray);
         $("#info").queue(function(){
 			$("#info").html("Mode change detected");
-			setTimeout(function(){$("#info").html("Game mode: 'Hard'")}, 1000);
-			setTimeout(function(){$("#info").html("")}, 2000);
+			setTimeout(function(){$("#info").html("Game mode: 'Hard'")}, 1500);
+			setTimeout(function(){$("#info").html("")}, 2500);
 			$("#info").dequeue();
 		});
         console.log("currentWord - " + currentWord);
@@ -124,8 +124,8 @@ $(document).ready(function(event) {
 			showBlank(lettersOfWordArray);
 			$("#info").queue(function(){
 				$("#info").html("Game Reset");
-				setTimeout(function(){$("#info").html("Game mode: Easy")}, 1000);
-				setTimeout(function(){$("#info").html("")}, 2000);
+				setTimeout(function(){$("#info").html("Game mode: Easy")}, 1500);
+				setTimeout(function(){$("#info").html("")}, 2500);
 				$("#info").dequeue();
 			});
 			
@@ -222,8 +222,8 @@ $(document).ready(function(event) {
                     $("#winSound")[0].play();
                     $("#info").queue(function(){
 						$("#info").html("You win");
-						setTimeout(function(){$("#info").html("New word updated")}, 1000);
-						setTimeout(function(){$("#info").html("")}, 2000);
+						setTimeout(function(){$("#info").html("New word updated")}, 1500);
+						setTimeout(function(){$("#info").html("")}, 2500);
 						$("#info").dequeue();
 					});
                     reset();

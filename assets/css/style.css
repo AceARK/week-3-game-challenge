@@ -8,11 +8,13 @@ body {
 	background-size: 1920px 980px;
 	color: white;
 	font-size: 30px;
-	font-family: 'Playfair Display SC', serif;
+	font-family: 'Orbitron', sans-serif;
 }
 
 h1 {
 	font-size: 50px;
+	font-weight: bolder;
+	/*font-family: 'Playfair Display SC', serif;*/
 }
 
 .message {
@@ -93,6 +95,20 @@ h1 {
 	padding: 50px;
 	margin-top: 150px;
 	font-size: 100px;
+}
+
+.hang {
+	padding-right: 0px;
+	margin-right: 0px;
+}
+
+.man {
+	padding-left: 0px;
+	margin-left: 0px;
+}
+
+.edition {
+	margin-top: 330px;
 }
 
 /****** CSS for sliding X door animation*******/
