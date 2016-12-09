@@ -3,25 +3,168 @@
 }
 
 body {
-	background: #8b8c8e url("../images/interiorxmen.jpg");
+	background-image: url("../images/xMenHq.jpg");
 	background-repeat: no-repeat;
-	background-size: 100%;
+	background-size: 1920px 980px;
 	color: white;
 	font-size: 30px;
+	font-family: 'Playfair Display SC', serif;
 }
 
-h1{
+h1 {
 	font-size: 50px;
 }
 
-.gameStats{
-	background-image: url("..images/metalblock.jpg");
+.message {
+	background-color: #379ee8;
+	opacity: 0.9;
+	display: none;
+	border: 5px solid white;
+    position: absolute;
+    top: 0;
+    left: 30%;
+    width: 800px;
+    height: 250px;
+}
+
+#alert {
+	top: 25%;
+    position: absolute;
+    padding: 40px;
+    margin-left: 25px;
+}
+
+.gameStats {
+	padding: 30px;
+	padding-top: 0px;
+	line-height: 40px;
+}
+
+.gameMode {
+	padding: 30px;
+}
+
+.btn {
+	display: inline;
+	font-size: 30px;
+	padding: 10px;
+	margin: 20px;
+	font-weight: 400;
+}
+
+.rules {
+	margin-left: 40px;
+}
+
+.ruleSet {
+	margin-left: 30px;
+}
+
+#hint {
+	padding-top: 15px;
+	background-color: #379ee8;
+	opacity: 0.8; 
+	width: 700px;
+	height: 80px;
+	margin-left: 32%;
+	margin-bottom: 20px;
+}
+
+#info {
+	padding-top: 15px;
+	background-color: #379ee8;
+	opacity: 0.8;
+	width: 700px; 
+	margin-left: 32%;
+	min-height: 80px;
 }
 
 
 #word {
 	white-space: pre;
 }
+
+#heading {
+	padding: 30px;
+	margin-left: 40px;
+}
+
+.doorBanner {
+	padding: 50px;
+	margin-top: 150px;
+	font-size: 100px;
+}
+
+/****** CSS for sliding X door animation*******/
+.container-fluid {
+	padding-left: 0px;
+}
+.cover {
+  position: relative;
+  width: 1920px;
+  height: 980px;
+  z-index: 1;
+  
+  -webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  -mox-box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+
+.left_gate {
+  position: absolute;
+  z-index: 3;
+  bottom: 0; right: 50%; left: 0; top: 0;
+  
+  -webkit-transition: all 5s ease-out;
+  -moz-transition: all 5s ease-out;
+  -ms-transition: all 5s ease-out;
+  -o-transition:all 5s ease-out;
+  transition: all 5s ease-out;
+  transition-delay: 0.5s;
+  
+}
+
+.cover:hover .left_gate {
+  right: 100%; left: -50%;
+}
+
+.right_gate {
+  position: absolute;
+  z-index: 3;
+/*  background: #0C5CA3;*/
+  bottom: 0;
+  left: 50%;
+  right: 0;
+  top: 0;
+  
+  -webkit-transition: all 5s ease-out;
+  -moz-transition: all 5s ease-out;
+  -ms-transition: all 5s ease-out;
+  -o-transition: all 5s ease-out;
+  transition: all 5s ease-out;
+  transition-delay: 0.5s;
+}
+
+.cover:hover .right_gate {
+  left: 100%; right: -50%;
+}
+
+.slide_in {
+  overflow: hidden;
+}
+.slide_in .left_gate {
+  background-image: url("../images/xDoorLeft.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.slide_in .right_gate {
+  background-image: url("../images/xDoorRight.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+/****** CSS for sliding X door ends ******/
 
 /**,
 *:after,

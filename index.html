@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hangman Game</title>
+	<title>X-Hangman</title>
 	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<script type="text/javascript" src="assets/javascript/game.js"></script>
 </head>
 <body>
-	<div class="container-fluid">
+	<div class="container-fluid cover slide_in">
+		
+		<!-- Sliding cerebro door -->
+		<!-- Left -->
+		<div class="left_gate">
+			<h1 class="doorBanner text-right">Hangman - </h1>
+		</div>
+		<!-- Right -->
+  		<div class="right_gate">
+  			<h1 class="doorBanner text-left"> X-Men Edition</h1>
+  		</div>
+		
+		<!-- Main heading -->
 		<div class="row">
-			<div class="col-md-8"><h1 id="heading">Hangman - <span id="theme">X-Men Edition</span></h1></div>
+			<div class="col-md-12 text-center"><h1 id="heading">Hangman - X-Men Edition</h1></div>
 		</div>
 		
+		<!-- Game rules | Mode selector buttons | Reset button -->
 		<div class="row">
-			<div class="col-md-6 col-md-offset-2">
+			<div class="col-md-5">
 				<div class="rules">
+					Rules:
 					<ol class="ruleSet">
 						<li>Choose game mode. Default is 'Easy'.</li>
 						<li>Enter letters using keyboard.</li>
 						<li>For hints, click 'Hint' button.</li>
+						<li>Be warned: using 'Hint' in 'Easy' mode decreases guesses left by 1.</li>
 						<li>To reset game, click 'Reset'</li>
 					</ol>
 				</div>
 			</div>
-			<div class="col-md-3 text-center">
-				<div class="score">
-					<span>Wins: 	<span id = "wins"></span> </span>
-					<br>
-					<span>Losses: 	<span id = "losses"></span></span>
+			<div class="col-md-4">
+				<div class="row gameMode text-center">
+					<button class="btn btn-info btn-large easy">Easy Mode</button>
+					<button class="btn btn-info btn-large hard">Hard Mode</button>
 				</div>
 			</div>
+			<div class="col-md-3 text-center">
+				<button class="btn btn-info btn-large reset">Reset</button>
+			</div>
 		</div>
-
-		<!-- TODO ->
-		Check JS file for Reset, and Hint button functionalities
-		Also test implementation of Hard/ Easy mode after game lost
-		HTML placement of divs and 
-		CSS for each div -->
 		
+		<!-- Game and stats -->
 		<div class="row text-center">
 			<div class="col-md-6 col-md-offset-3">
 				<div class="gameStats">
@@ -47,35 +61,70 @@
 					Letters used: 	<p id = "guessedLetters"></p>
 				</div>
 			</div>
-			<div class="col-md-3">
-				<div class="row gameMode">
-					<button class="btn btn-info btn-large easy">Easy Mode</button>
-				</div>
-				<div class="row gameMode">
-					<button class="btn btn-info btn-large hard">Hard Mode</button>
+			<div class="col-md-3 text-center">
+				<div class="score">
+					<span>Wins		: <span id = "wins"></span></span>
+					<br>
+					<span>Losses	: <span id = "losses"></span></span>
 				</div>
 			</div>
 		</div>
-
-		<!-- <div class="rss">
-	  		<input type="checkbox" id="buttonThree" />
-	  		<label for="buttonThree"> <!-- class="attention" -->
-	    		<!-- <i></i>
-	  		</label>
-		</div> --> <!-- /rss -->
 		
+		<!-- Provision for hints -->
 		<div class="row text-center">
 			<div class="col-md-12">
 				<div class="control">
 					<button class="btn btn-info btn-large hint" data-toggle="collapse" data-target="#hint">Hint</button>
-					<button class="btn btn-info btn-large reset">Reset</button>
+				</div>
+				<div id="hint" class="collapse img-rounded">
+					<p></p>
 				</div>
 			</div>
 		</div>
 		
-		<div id="hint" class="collapse">
-			<p id="hintLine">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+		<!-- Info about game stat -->
+		<div class="row">
+			<div id="info" class="col-md-12 img-rounded text-center"></div>
 		</div>
+
+		<!-- Sliding notification for invalid input -->
+		<div class="message img-rounded text-center">
+			<p id="alert"></p>
+		</div>
+
+		<!-- TODO
+	 	Check background and sizes again to fit everything without window scroll
+	 	Fix Hint collapse guesses reduction bug
+	 	More Css finising touches - fonts, sizes, etc. -->
+
+		<!-- Audio files -->
+		<audio loop id="mainTheme" src="assets/soundfiles/xMenCombinedThemeSong.mp3"
+		    autoplay="true" 
+		    width="0" 
+		    height="0">
+		</audio>
+		<audio id="keyPressSound">
+		    <source src="assets/soundfiles/keyInput.mp3">
+		</audio>
+		<audio id="modeChangeSound">
+		    <source src="assets/soundfiles/modeSelection.mp3">
+		</audio>
+		<audio id="hintResetSound">
+		    <source src="assets/soundfiles/reset.mp3">
+		</audio>
+		<audio id="xDoorSliding">
+		    <source src="assets/soundfiles/xDoorSlide.mp3">
+		</audio>
+		<audio id="xDoorSliding">
+		    <source src="assets/soundfiles/xDoorSlide.mp3">
+		</audio>
+		<audio id="winSound">
+		    <source src="assets/soundfiles/rightWord.mp3">
+		</audio>
+		<audio id="loseSound">
+		    <source src="assets/soundfiles/wrongWord.mp3">
+		</audio>
+		
 	</div>
 </body>
 </html>
