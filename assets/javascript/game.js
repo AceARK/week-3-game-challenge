@@ -2,39 +2,39 @@
 
 var wordObjectEasy = {
 // if required, use key instead of traversing to the 0th element for getting currentWord
-    "mutant" 		: ["pic2.jpg", "whistle tweet"],
-    "sentinel" 		: ["pic3.jpg", "tweeeee sentinel eeeeeeet"],
-    "wolverine" 	: ["pic3.jpg", "tweeeeeeeeeeeet"],
-    "cyclops" 		: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "magneto"		: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "juggernaut"	: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "adamantium"	: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "mystique"		: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "sabretooth"	: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "jean grey"		: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "professor x"	: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "beast"			: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "nightcrawler"	: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "telepathy"		: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "telekinesis"	: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "phoenix"		: [ "pic3.jpg", "tweeeeeeeeeeeet"]
+    "mutant" 		: [ "pic2.jpg", "When evolution skips ahead"],
+    "sentinel" 		: [ "pic3.jpg", "'Targeting systems locked. Terminate all units.'"],
+    "wolverine" 	: [ "pic3.jpg", "'You caged the wrong animal. Bub.'"],
+    "cyclops" 		: [ "pic3.jpg", "This guy's the leader in comics but so not in the movies."],
+    "magneto"		: [ "pic3.jpg", "'Peace was never an option.'"],
+    "juggernaut"	: [ "pic3.jpg", "Never stopping once started"],
+    "adamantium"	: [ "pic3.jpg", "Think claws"],
+    "mystique"		: [ "pic3.jpg", "Is she the Good guy, or the Bad guy? You choose."],
+    "sabretooth"	: [ "pic3.jpg", "Named after a extinct animal"],
+    "jean grey"		: [ "pic3.jpg", "'Live, Scott. Live.'"],
+    "professor x"	: [ "pic3.jpg", "'The solo last letter in this word is the first letter of the game's theme."],
+    "beast"			: [ "pic3.jpg", "Intelligent and strong"],
+    "nightcrawler"	: [ "pic3.jpg", "He goes up in a puff of black smoke to any place he can see."],
+    "telepathy"		: [ "pic3.jpg", "Helps in reading people's thoughts"],
+    "telekinesis"	: [ "pic3.jpg", "Moving objects with the mind"],
+    "phoenix"		: [ "pic3.jpg", "An omega level mutant. Cosmic power incarnate."]
 };
 
 var wordObjectHard = {
-    "phoenix force"	: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "hank mccoy"	: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "teleportation"	: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "emma frost"	: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "archangel"		: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "james logan"	: ["pic3.jpg", "tweee hard mode eeeeeeeeet"],
-    "scott summers"	: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "soulsword"		: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "ororo monroe"	: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "kurt wagner"	: [ "pic3.jpg", "tweeeeeeeeeeeet"],
-    "kitty pryde"	: [ "pic1.jpg", "tweet tweet whistle"],
-    "eric lehnsherr": [ "pic1.jpg", "tweet tweet whistle"],
-    "raven"			: [ "pic1.jpg", "tweet tweet whistle"],
-    "marvel girl"	: [ "pic1.jpg", "blahblahblah"]
+    "phoenix force"	: [ "pic3.jpg", "Immortal mutable cosmic entity"],
+    "hank mccoy"	: [ "pic3.jpg", "He doesn't need to get angry to be big and blue."],
+    "teleportation"	: [ "pic3.jpg", "If you're stuck in traffic, you'd be thinking of having this power."],
+    "emma frost"	: [ "pic3.jpg", "White queen"],
+    "archangel"		: [ "pic3.jpg", "Wings"],
+    "james logan"	: [ "pic3.jpg", "'You actually go outside in these things?'"],
+    "scott summers"	: [ "pic3.jpg", "'What would you prefer? Yellow spandex?'"],
+    "soulsword"		: [ "pic3.jpg", "Emobiment of Illyana's power and her 'soul'"],
+    "ororo munroe"	: [ "pic3.jpg", "Someone's real name. Say it right or she'll make it rain."],
+    "kurt wagner"	: [ "pic3.jpg", "Other name for the nightcrawler"],
+    "kitty pryde"	: [ "pic1.jpg", "This name has relation to these words - kitten, lion pride"],
+    "eric lehnsherr": [ "pic1.jpg", "His name before he founded the Brotherhood of Mutants."],
+    "raven"			: [ "pic1.jpg", "The name Charles called her"],
+    "marvel girl"	: [ "pic1.jpg", "Another alias for the omega level version of Jean Grey"]
 };
 
 // array to store indices of wordObject
@@ -78,7 +78,6 @@ $(document).ready(function(event) {
 			setTimeout(function(){$("#info").html("Game mode: 'Easy'")}, 1500);
 			$("#info").dequeue();
 		});
-        console.log("currentWord - " + currentWord);
     });
 
     // Changing game mode to Hard
@@ -94,7 +93,6 @@ $(document).ready(function(event) {
 			setTimeout(function(){$("#info").html("Game mode: 'Hard'")}, 1500);
 			$("#info").dequeue();
 		});
-        console.log("currentWord - " + currentWord);
     });
 
     // Getting hints on Hint button click
@@ -122,10 +120,7 @@ $(document).ready(function(event) {
 			$("#losses").html(losses);
 			hardMode = false;
 			getWordArray();
-			console.log("Array of letters: " + arrayOfLetters);
 			lettersOfWordArray = getNewWord();
-			console.log("currentWord - " + currentWord);
-			console.log("wordArray " + wordArray);
 			showBlank(lettersOfWordArray);
 			$("#info").queue(function(){
 				$("#info").html("Game Reset");
@@ -139,9 +134,7 @@ $(document).ready(function(event) {
     // 1. Computer chooses word
 
     getWordArray();
-    console.log("wordarray " + wordArray);
     lettersOfWordArray = getNewWord();
-    console.log("Letters of current word array: " + lettersOfWordArray);
 
     // 2. Displays word in blanks and guesses left
 
@@ -157,14 +150,11 @@ $(document).ready(function(event) {
     	// Hide any text from previous input or event
       	$(".alert").hide();
         var userInput = String.fromCharCode(event.keyCode).toLowerCase();
-        console.log("User input: " + userInput);
+
         // Not allowing invalid characters or numbers
         if (alphabets.indexOf(userInput) == -1) {
-            console.log("Not allowing invalid input: " + userInput);
             $("#alertText").html("Invalid input. Choose a letter of the English alphabet.");
             $(".alert").slideToggle(700);
-           
-            console.log("Printing used letter array" + usedLettersArray.indexOf(userInput));
             return; // go back and wait for new key press
         }
         // User input is an alphabet
@@ -174,7 +164,6 @@ $(document).ready(function(event) {
         }
         // UserInput is not one of previously typed letters
         else {
-            console.log("user input is not among already inputed letters");
 
             // 4. Letters used updated
 
@@ -189,7 +178,7 @@ $(document).ready(function(event) {
 
             // When userInput is a letter in currentWord
             if (lettersOfWordArray.indexOf(userInput) != -1) {
-                console.log("If user input is in current word");
+
                 // local variable array to store indices where letter exists in word
                 var replaceAtIndex = [];
 
@@ -206,15 +195,15 @@ $(document).ready(function(event) {
                 }
                 printBlankNow(blankWord);
 
-                console.log("blankWord:" + blankWord + "guessesLeft" + guessesLeft);
+             
 
 
                 // 8. If word is complete, "You win" message, wins incremented, guesses reset, display details about word.
 
                 if (blankWord.indexOf("_") == -1) {
-                    console.log("if word is guessed");
+                 
                     wins++;
-                    console.log("Wins " + wins);
+                 
                     $("#wins").html(wins);
                     $("#winSound")[0].play();
                     $("#info").queue(function(){
@@ -229,38 +218,38 @@ $(document).ready(function(event) {
 						$("#info").dequeue();
 					});
                     reset();
-                    console.log("guesses " + guessesLeft); // see if required (unlikely when tested) -> code to check if easy or hard mode, and supply wordobject to getNewWord()
+                  
                     // get new word and print blanks for it
                     lettersOfWordArray = getNewWord();
-                    console.log("Current word: " + currentWord);
-                    console.log("Letters of new word array " + lettersOfWordArray);
+                  
+                
                     showBlank(lettersOfWordArray);
                     return;
                 }
 
                 // 8.a. If word is not complete, go back to wait for key press.
                 else {
-                    console.log("if word not complete and guesses still left");
+                  
                     return;
                 }
             }
 
             // 7. If letter is not in word, reduce guesses.	
             else {
-                console.log("if user input not in word");
+               
                 guessesLeft--;
                 $("#guessesLeft").html(guessesLeft);
                 if(guessesLeft == 1 && !hintUsedForCurrentWord && !hardMode){
                 	$(".hint").prop('disabled', true);
                 }
-                console.log("Guesses left: " + guessesLeft);
+             
 
                 // 7.a. If guesses = 0, "You lose" message.
 
                 if (guessesLeft === 0) {
-                    console.log("If guesses left = 0 and word not guessed ");
+                  
                     losses++;
-                    console.log("Losses " + losses);
+                  
                     $("#losses").html(losses);
                     $("#loseSound")[0].play();
                     $("#info").queue(function(){
@@ -275,11 +264,10 @@ $(document).ready(function(event) {
 						$("#info").dequeue();
 					});
                     reset();
-                    console.log("Guesses " + guessesLeft); 
+                  
                     // get new word and print blanks for it
                     lettersOfWordArray = getNewWord();
-                    console.log("Current word: " + currentWord);
-                    console.log("Letters of new word array " + lettersOfWordArray);
+              
                     showBlank(lettersOfWordArray);
                 }
 
@@ -301,12 +289,12 @@ function getWordArray() {
 	wordArray = [];
 	if(hardMode) {
 		for (var key in wordObjectHard) {
-	    console.log("wordObjectHard - " + wordObjectHard[key]);
+	  
 	    wordArray.push(key);
 		}
 	}else {
 		for (var key in wordObjectEasy) {
-	    console.log("wordObjectEasy - " + wordObjectEasy[key]);
+	
 	    wordArray.push(key);
 		}
 	}
