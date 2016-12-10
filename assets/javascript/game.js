@@ -92,7 +92,6 @@ $(document).ready(function(event) {
         $("#info").queue(function(){
 			$("#info").html("Mode change detected");
 			setTimeout(function(){$("#info").html("Game mode: 'Hard'")}, 1500);
-			// setTimeout(function(){$("#info").html("")}, 2500);
 			$("#info").dequeue();
 		});
         console.log("currentWord - " + currentWord);
@@ -131,7 +130,6 @@ $(document).ready(function(event) {
 			$("#info").queue(function(){
 				$("#info").html("Game Reset");
 				setTimeout(function(){$("#info").html("Game mode: Easy")}, 1500);
-				// setTimeout(function(){$("#info").html("")}, 2500);
 				$("#info").dequeue();
 			});
 			
@@ -180,14 +178,12 @@ $(document).ready(function(event) {
 
             // 4. Letters used updated
 
-            // console.log("Array of letters: " + arrayOfLetters);
+           // code to remove userInput from list of arrayOfLetters and add to usedLettersArray
             arrayOfLetters.splice(arrayOfLetters.indexOf(userInput), 1);
             usedLettersArray.push(userInput);
-            // code to remove userInput from list of arrayOfLetters and add to usedLettersArray
-            // console.log("Array of letters after splice: " + arrayOfLetters);
-            // console.log("Alphabets after splice: " + alphabets);
+            
             $("#guessedLetters").html(usedLettersArray.toString().toUpperCase()); // printing used letters to html
-            // console.log("Used letters array: " + usedLettersArray);
+            
 
             // 5. Check if letter is in word chosen
 
@@ -205,9 +201,8 @@ $(document).ready(function(event) {
                         replaceAtIndex.push(i);
                     }
                     // run function to replace userInput wherever necessary in blankWord
-                    // console.log("Blank is going to be replaced at: " + replaceAtIndex);
                     blankWord = replaceBlank(blankWord, replaceAtIndex, userInput);
-                    // console.log("Blank word now: " + blankWord);
+                    
                 }
                 printBlankNow(blankWord);
 
@@ -280,7 +275,7 @@ $(document).ready(function(event) {
 						$("#info").dequeue();
 					});
                     reset();
-                    console.log("Guesses " + guessesLeft); // see if required -> code to check if easy or hard mode, and supply wordobject to getNewWord()
+                    console.log("Guesses " + guessesLeft); 
                     // get new word and print blanks for it
                     lettersOfWordArray = getNewWord();
                     console.log("Current word: " + currentWord);
