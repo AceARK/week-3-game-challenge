@@ -299,10 +299,10 @@ li {
 	}
 
 	#hintDiv {
-		padding-top: 13px;
-		height: 60px;
-		font-size: 24px;
-		margin-left: 12px;
+		/*padding-top: 18px;*/
+		height: 80px;
+		font-size: 20px;
+		/*margin-left: 12px;*/
 	}
 
 	#filler {
@@ -319,10 +319,10 @@ li {
 
 
 	#info {
-		padding-top: 13px;
-		height: 60px;
-		font-size: 24px;
-		margin-right: 12px;
+		/*padding-top: 18px;*/
+		height: 80px;
+		font-size: 20px;
+		/*margin-right: 15px;*/
 	}
 
 	.hang {
