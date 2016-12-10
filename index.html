@@ -4,6 +4,8 @@
 	<title>X-Hangman</title>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,7 +20,7 @@
 		<div class="row">
 			<div class="col-md-6 left_gate">
 				<h1 class="doorBanner hang text-right">Hang</h1>
-				<h1 class="doorBanner edition text-right">X-Men</h1>
+				<h1 class="doorBanner edition xmen text-right">X-Men</h1>
 			</div>
 			<!-- Right -->
 	  		<div class="col-md-6 right_gate">
@@ -45,6 +47,7 @@
 			</div>
 			<div class="col-md-4">
 				<div class="gameMode text-center">
+				<!-- 	<input type="checkbox" checked data-toggle="toggle" data-size="large" data-on="EASY MODE" data-off="HARD MODE" data-onstyle="info" data-offstyle="danger"> -->
 					<button class="btn btn-info btn-large easy">Easy Mode</button>
 					<button class="btn btn-info btn-large hard">Hard Mode</button>
 				</div>
@@ -63,11 +66,11 @@
 					Letters used: 	<p id = "guessedLetters"></p>
 				</div>
 			</div>
-			<div class="col-md-3 text-center">
+			<div class="col-md-3 text-left">
 				<div class="score">
-					<span>Wins		: <span id = "wins"></span></span>
+					<span>Wins		: <span id = "wins">0</span></span>
 					<br>
-					<span>Losses	: <span id = "losses"></span></span>
+					<span>Losses	: <span id = "losses">0</span></span>
 				</div>
 			</div>
 		</div>
@@ -76,19 +79,16 @@
 		<div class="row hintAndInfo text-center">
 			<div class="col-md-6">
 				<div>
-					<button class="btn btn-info btn-large hint" data-toggle="collapse" data-target="#hint">Hint</button>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<div id="hintDiv" class="collapse img-rounded text-center"></div>
-					</div>
-					<!-- Info about game stat -->
-					<div class="col-md-6">
-						<div id="info" class="img-rounded text-center"></div>
-					</div>
+					<button class="btn btn-info btn-large hint" data-toggle="collapse" data-target="#hintDiv">Hint</button>
+					<div id="hintDiv" class="collapse img-rounded text-center"></div>
 				</div>
 			</div>
-		</div>
+			<!-- Info about game stat -->
+			<div class="col-md-6">
+				<div id="filler">GAME STATS:</div>
+				<div id="info" class="img-rounded text-center"></div>
+			</div>
+		</div>	
 		
 		
 		<!-- <div class="row">

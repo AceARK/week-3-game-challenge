@@ -163,7 +163,7 @@ $(document).ready(function(event) {
         // Not allowing invalid characters or numbers
         if (alphabets.indexOf(userInput) == -1) {
             console.log("Not allowing invalid input: " + userInput);
-            $("#alertText").html("Invalid input. Use a letter of the English alphabet.");
+            $("#alertText").html("Invalid input. Choose a letter of the English alphabet.");
             $(".alert").slideToggle(700);
            
             console.log("Printing used letter array" + usedLettersArray.indexOf(userInput));

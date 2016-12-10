@@ -19,26 +19,62 @@ body {
 	font-size: 100px;
 }
 
-/*.col-md-6 {
-	padding-left: 0px;
-}*/
-
 .hang {
 	margin-top: 20%;
-	padding-right: -15px;
-	margin-right: -15px;
+	padding-right: -15px; 	/* Overriding default col-md-6 padding right */
+	margin-right: -15px;	/* Overriding default col-md-6 padding right */
 }
 
 .man {
 	margin-top: 20%;
-	padding-left: -15px;
-	margin-left: -15px;
+	padding-left: -15px;	/* Overriding default col-md-6 padding left */
+	margin-left: -15px;		/* Overriding default col-md-6 padding left */
 }
 
 .edition {
 	margin-top: 45%;
 	margin-right: 7px;
 	margin-left: 7px;
+}
+
+.xmen {
+
+	/*  Code taken from neon effect site but useless here *** Check if required */
+	/*display: inline-block;*/
+	/*-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;*/
+	/*float: none;*/
+	/*z-index: auto;*/
+	/*width: auto;*/
+	/*height: auto;*/
+	/*position: static;*/
+	/*cursor: default;*/
+	/*margin: 0;*/
+	/*padding: 10px;*/
+	/*overflow: visible;*/
+	/*border: none;
+	-webkit-border-radius: 0;
+	border-radius: 0;*/
+	/*font: normal 48px/normal "Warnes", Helvetica, sans-serif;*/
+	/*color: rgba(255,255,255,1);
+	text-decoration: normal;*/
+	/*text-align: center;*/
+	/*-o-text-overflow: clip;
+	text-overflow: clip;*/
+	/*white-space: pre;*/
+	/*background: none;*/
+	/*-webkit-box-shadow: none;
+	box-shadow: none;*/
+	text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #00ddff , 0 0 70px #00ddff , 0 0 80px #00ddff , 0 0 100px #00ddff ;
+	/*-webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+	-moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+	-o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+	transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);*/
+	/*-webkit-transform: none;
+	transform: none;*/
+	/*-webkit-transform-origin: 50% 50% 0;
+	transform-origin: 50% 50% 0;*/
 }
 
 
@@ -58,10 +94,12 @@ li {
 }
 
 .ruleSet {
+	margin-top: 30px;
 	font-size: 25px;
 	margin-left: 45px;
 	line-height: 20px;
 	font-size: 20px;
+	font-weight: 500;
 }
 
 .gameMode {
@@ -71,30 +109,60 @@ li {
 }
 
 .btn {
+	color: #000e16;
 	display: inline;
-	font-size: 30px;
-	padding: 10px;
-	margin: 10px;
-	font-weight: 400;
+	font-size: 25px;
+	padding: 15px;
+	margin: 15px;
+	margin-top: 10px;
+	font-weight: 900;
+	text-transform: uppercase;
+	 background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 7.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%),
+    
+    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
+    hsl(0,0%,90%) 47%, 
+    hsl(0,0%,78%) 53%,
+    hsl(0,0%,70%)100%);
+
+      box-shadow: inset hsla(0,0%,15%,  1) 0  0px 0px 4px, /* border */
+    inset hsla(0,0%,15%, .8) 0 -1px 5px 4px, /* soft SD */
+    inset hsla(0,0%,0%, .25) 0 -1px 0px 7px, /* bottom SD */
+    inset hsla(0,0%,100%,.7) 0  2px 1px 7px; /* top HL */
+    
+    /*hsla(0,0%, 0%,.15) 0 -5px 6px 4px, /* outer SD */
+    /*hsla(0,0%,100%,.5) 0  5px 6px 4px; /* outer HL */ 
+  
+  transition: color .2s;
 }
 
 .reset {
-	margin-top: 55px;
+	margin-top: 40px;
 	margin-left: 20px;
 }
 
+
 .score {
-	margin-right: 50px;
+	margin-top: 50px;
+	padding: 15px;
 	font-size: 30px;
 }
 
+#wins, #losses {
+	font-weight: 900;
+	padding: 20px;
+}
+
 .gameStats {
-	min-height: 260px;
+	min-height: 340px;
 	padding: 30px;
 	padding-top: 0px;
+	margin-top: 10px;
 	padding-bottom: 0px;
-	line-height: 40px;
+	line-height: 50px;
 	font-size: 30px;
+	font-weight: 800;
 }
 
 #word {
@@ -104,29 +172,60 @@ li {
 
 .hintAndInfo {
 	min-height: 200px;
+	font-weight: 700;
 }
 
 #hintDiv {
 	padding-top: 15px;
 	background-color: #379ee8;
+
+	background-image: url("../images/metalboard.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	color: #1880cc;
+
 	opacity: 0.8; 
 	width: 100%;
 	height: 80px;
 	margin-bottom: 20px;
+	font-size: 30px;
+	border: 2px solid white;
+}
+
+#filler {
+	height: 92px;
+	font-size: 25px;
+	font-weight: 500;
+	margin-bottom: 0px;
+	padding-top: 40px;
 }
 
 
 #info {
 	padding-top: 15px;
 	background-color: #379ee8;
+
+	background-image: url("../images/metalboard.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	color: #1880cc;
+
 	opacity: 0.8;
 	width: 100%; 
 	height: 80px;
+	font-size: 28px;
+	border: 2px solid white;
 }
 
 
 .alert {
 	background-color: #379ee8;
+
+	background-image: url("../images/metalboard.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	color: #1880cc;
+
 	opacity: 0.9;
 	display: none;
 	border: 5px solid white;
@@ -137,11 +236,60 @@ li {
 }
 
 #alertText {
-	top: 25%;
-    position: absolute;
     padding: 40px;
-    margin-left: 25px;
+    padding-top: 70px;
+    font-size: 35px;
+    font-weight: 800;
 }
+
+
+/***** Metal button code *****/
+/*button { border: none; display: block; }*/
+/*a { text-decoration: none; display: block; }*/
+
+
+
+/* Metal ------------------------- */
+/*
+.metal {
+  position: relative;
+  margin: 40px auto;
+  outline: none;
+  
+ 
+  text-align: center;
+  color: hsla(0,0%,20%,1);*/
+  /*text-shadow: hsla(0,0%,40%,.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;*/
+  
+  /*background-color: hsl(0,0%,90%);
+  box-shadow: inset hsla(0,0%,15%,  1) 0  0px 0px 4px,*/ /* border */
+   /* inset hsla(0,0%,15%, .8) 0 -1px 5px 4px,*/ /* soft SD */
+    /*inset hsla(0,0%,0%, .25) 0 -1px 0px 7px,*/ /* bottom SD */
+    /*inset hsla(0,0%,100%,.7) 0  2px 1px 7px,*/ /* top HL */
+    
+   /* hsla(0,0%, 0%,.15) 0 -5px 6px 4px,*/ /* outer SD */
+  /*  hsla(0,0%,100%,.5) 0  5px 6px 4px;*/ /* outer HL */ 
+  
+/*  transition: color .2s;
+}
+*/
+/* Linear ------------------------- */
+/*
+.metal.linear {
+  width: 250px;*/
+ /* font-size: 4em;*/
+ /* height: 90px;
+  border-radius: 5px;
+  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 7.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%),
+    
+    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
+    hsl(0,0%,90%) 47%, 
+    hsl(0,0%,78%) 53%,
+    hsl(0,0%,70%)100%);
+}
+*/
 
 
 /****** CSS for sliding X door animation*******/
