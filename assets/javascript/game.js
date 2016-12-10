@@ -40,6 +40,7 @@ var wordObjectHard = {
 // array to store indices of wordObject
 var wordArray = [];
 var hardMode = false;
+var hintUsedForCurrentWord = false;
 var blankWord = []; // variable to hold blank word for initial display
 var guessesLeft = 8;
 var wins = 0;
@@ -58,8 +59,11 @@ $(document).ready(function(event) {
 
 	// Play sound for x doors sliding
 	$(".cover").mouseenter(function() {
-			    $("#xDoorSliding")[0].play();
-			  });
+		setTimeout(function(){$("#xDoorSliding")[0].play()}, 1900);
+	});
+
+	// Displaying game mode Easy
+	$("#info").html("Game mode: Easy");
 
     // Changing game mode to Easy
     $(".easy").on("click", function() {
@@ -88,7 +92,7 @@ $(document).ready(function(event) {
         $("#info").queue(function(){
 			$("#info").html("Mode change detected");
 			setTimeout(function(){$("#info").html("Game mode: 'Hard'")}, 1500);
-			setTimeout(function(){$("#info").html("")}, 2500);
+			// setTimeout(function(){$("#info").html("")}, 2500);
 			$("#info").dequeue();
 		});
         console.log("currentWord - " + currentWord);
@@ -98,11 +102,13 @@ $(document).ready(function(event) {
     $(".hint").on("click", function(){
     	$("#hintResetSound")[0].play();
     	if(hardMode) {
-    		$("#hint").html(wordObjectHard[currentWord][1]);
+    		$("#hintDiv").html(wordObjectHard[currentWord][1]);
     	}else {
-			$("#hint").html(wordObjectEasy[currentWord][1]);
-
-			guessesLeft--;///////////////////////// BUG -> Clicking on Hint button to close also triggers guesses-- //////////////
+			$("#hintDiv").html(wordObjectEasy[currentWord][1]);
+			if(!hintUsedForCurrentWord){
+				guessesLeft--;
+			}
+			hintUsedForCurrentWord = true;
 			$("#guessesLeft").html(guessesLeft);
     	}
 	});
@@ -125,7 +131,7 @@ $(document).ready(function(event) {
 			$("#info").queue(function(){
 				$("#info").html("Game Reset");
 				setTimeout(function(){$("#info").html("Game mode: Easy")}, 1500);
-				setTimeout(function(){$("#info").html("")}, 2500);
+				// setTimeout(function(){$("#info").html("")}, 2500);
 				$("#info").dequeue();
 			});
 			
@@ -146,23 +152,19 @@ $(document).ready(function(event) {
 
     // 3. User presses key
 
-    // document.onkeydown = function(event) {
-    // 	$("#keyPressSound")[0].play();
-    // }
-
     // Accepting user input
     document.onkeyup = function(event) {
     	// Play sound on key input
     	$("#keyPressSound")[0].play();
     	// Hide any text from previous input or event
-      	$(".message").hide();
+      	$(".alert").hide();
         var userInput = String.fromCharCode(event.keyCode).toLowerCase();
         console.log("User input: " + userInput);
         // Not allowing invalid characters or numbers
         if (alphabets.indexOf(userInput) == -1) {
             console.log("Not allowing invalid input: " + userInput);
-            $("#alert").html("Invalid input. Use a letter of the English alphabet.");
-            $(".message").slideToggle(700);
+            $("#alertText").html("Invalid input. Use a letter of the English alphabet.");
+            $(".alert").slideToggle(700);
            
             console.log("Printing used letter array" + usedLettersArray.indexOf(userInput));
             return; // go back and wait for new key press
@@ -223,7 +225,12 @@ $(document).ready(function(event) {
                     $("#info").queue(function(){
 						$("#info").html("You win");
 						setTimeout(function(){$("#info").html("New word updated")}, 1500);
-						setTimeout(function(){$("#info").html("")}, 2500);
+						if(hardMode){
+							setTimeout(function(){$("#info").html("Game mode: Hard")}, 2500);
+						}
+						else {
+							setTimeout(function(){$("#info").html("Game mode: Easy")}, 2500);
+						}
 						$("#info").dequeue();
 					});
                     reset();
@@ -248,6 +255,9 @@ $(document).ready(function(event) {
                 console.log("if user input not in word");
                 guessesLeft--;
                 $("#guessesLeft").html(guessesLeft);
+                if(guessesLeft == 1 && !hintUsedForCurrentWord && !hardMode){
+                	$(".hint").prop('disabled', true);
+                }
                 console.log("Guesses left: " + guessesLeft);
 
                 // 7.a. If guesses = 0, "You lose" message.
@@ -261,7 +271,12 @@ $(document).ready(function(event) {
                     $("#info").queue(function(){
 						$("#info").html("You lose");
 						setTimeout(function(){$("#info").html("New word updated")}, 1000);
-						setTimeout(function(){$("#info").html("")}, 2000);
+						if(hardMode){
+							setTimeout(function(){$("#info").html("Game mode: Hard")}, 2500);
+						}
+						else {
+							setTimeout(function(){$("#info").html("Game mode: Easy")}, 2500);
+						}
 						$("#info").dequeue();
 					});
                     reset();
@@ -310,6 +325,8 @@ function reset() {
     lettersOfWordArray = [];
     usedLettersArray = [];
     currentWord = "";
+    hintUsedForCurrentWord = "";
+    $(".hint").prop('disabled', false);
     $("#guessedLetters").html(usedLettersArray.toString().toUpperCase());
     $("#guessesLeft").html(guessesLeft);
 }

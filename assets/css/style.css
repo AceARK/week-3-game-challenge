@@ -3,33 +3,42 @@
 }
 
 body {
-	background-image: url("../images/xMenHq.jpg");
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
+	background: url("../images/xMenHq.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 	color: white;
 	font-size: 20px;
 	font-family: 'Orbitron', sans-serif;
+	overflow: hidden;
 }
 
 
 .doorBanner {
-	padding: 50px;
-	margin-top: 150px;
 	font-size: 100px;
 }
 
+/*.col-md-6 {
+	padding-left: 0px;
+}*/
+
 .hang {
-	padding-right: 0px;
-	margin-right: 0px;
+	margin-top: 20%;
+	padding-right: -15px;
+	margin-right: -15px;
 }
 
 .man {
-	padding-left: 0px;
-	margin-left: 0px;
+	margin-top: 20%;
+	padding-left: -15px;
+	margin-left: -15px;
 }
 
 .edition {
-	margin-top: 330px;
+	margin-top: 45%;
+	margin-right: 7px;
+	margin-left: 7px;
 }
 
 
@@ -39,46 +48,51 @@ h1 {
 }
 
 #heading {
-	padding: 30px;
+	padding: 20px;
+	padding-top: 15px;
 	margin-left: 40px;
 }
 
 li {
-	padding: 10px;
-}
-
-.rules {
-	font-size: 25px;
-	margin-left: 45px;
-	line-height: 18px;
+	padding: 5px;
 }
 
 .ruleSet {
+	font-size: 25px;
+	margin-left: 45px;
+	line-height: 20px;
 	font-size: 20px;
-	margin-left: 20px;
 }
-
 
 .gameMode {
 	padding: 30px;
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
 .btn {
 	display: inline;
 	font-size: 30px;
 	padding: 10px;
-	margin: 20px;
+	margin: 10px;
 	font-weight: 400;
 }
 
 .reset {
-	margin-top: 50px;
+	margin-top: 55px;
+	margin-left: 20px;
 }
 
+.score {
+	margin-right: 50px;
+	font-size: 30px;
+}
 
 .gameStats {
+	min-height: 260px;
 	padding: 30px;
 	padding-top: 0px;
+	padding-bottom: 0px;
 	line-height: 40px;
 	font-size: 30px;
 }
@@ -88,17 +102,16 @@ li {
 }
 
 
-.hintdefault {
+.hintAndInfo {
 	min-height: 200px;
 }
 
-#hint {
+#hintDiv {
 	padding-top: 15px;
 	background-color: #379ee8;
 	opacity: 0.8; 
-	width: 700px;
+	width: 100%;
 	height: 80px;
-	margin-left: 32%;
 	margin-bottom: 20px;
 }
 
@@ -107,25 +120,23 @@ li {
 	padding-top: 15px;
 	background-color: #379ee8;
 	opacity: 0.8;
-	width: 700px; 
-	margin-left: 32%;
-	min-height: 80px;
+	width: 100%; 
+	height: 80px;
 }
 
 
-.message {
+.alert {
 	background-color: #379ee8;
 	opacity: 0.9;
 	display: none;
 	border: 5px solid white;
     position: absolute;
     top: 0;
-    left: 30%;
-    width: 800px;
+    width: 1000px;
     height: 250px;
 }
 
-#alert {
+#alertText {
 	top: 25%;
     position: absolute;
     padding: 40px;
@@ -144,7 +155,7 @@ li {
 }
 
 .cover {
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -165,7 +176,7 @@ li {
   -ms-transition: all 5s ease-out;
   -o-transition:all 5s ease-out;
   transition: all 5s ease-out;
-  transition-delay: 0.5s;
+  transition-delay: 2s;
   
 }
 
@@ -187,7 +198,7 @@ li {
   -ms-transition: all 5s ease-out;
   -o-transition: all 5s ease-out;
   transition: all 5s ease-out;
-  transition-delay: 0.5s;
+  transition-delay: 2s;
 }
 
 .cover:hover .right_gate {
@@ -200,13 +211,15 @@ li {
 .slide_in .left_gate {
   background-image: url("../images/xDoorLeft.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 100% 100%;
 }
 .slide_in .right_gate {
   background-image: url("../images/xDoorRight.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 100% 100%;
 }
+
+
 
 /****** CSS for sliding X door ends ******/
 

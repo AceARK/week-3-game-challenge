@@ -10,20 +10,22 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<script type="text/javascript" src="assets/javascript/game.js"></script>
 </head>
-<body class="cover">
-	<div class="container-fluid slide_in">
+<body>
+	<div class="container-fluid cover slide_in">
 		
 		<!-- Sliding cerebro door -->
 		<!-- Left -->
-		<div class="left_gate">
-			<h1 class="doorBanner hang text-right">Hang</h1>
-			<h1 class="doorBanner edition text-right">X-Men</h1>
+		<div class="row">
+			<div class="col-md-6 left_gate">
+				<h1 class="doorBanner hang text-right">Hang</h1>
+				<h1 class="doorBanner edition text-right">X-Men</h1>
+			</div>
+			<!-- Right -->
+	  		<div class="col-md-6 right_gate">
+	  			<h1 class="doorBanner man text-left">man</h1>
+	  			<h1 class="doorBanner edition text-left">Edition</h1>
+	  		</div>
 		</div>
-		<!-- Right -->
-  		<div class="right_gate">
-  			<h1 class="doorBanner man text-left">man</h1>
-  			<h1 class="doorBanner edition text-left">Edition</h1>
-  		</div>
 		
 		<!-- Main heading -->
 		<div class="row">
@@ -33,24 +35,21 @@
 		<!-- Game rules | Mode selector buttons | Reset button -->
 		<div class="row">
 			<div class="col-md-4">
-				<div class="rules">
-					Rules:
-					<ol class="ruleSet">
-						<li>Choose game mode. Default is 'Easy'.</li>
+				<div class="ruleSet">
+					<ul>
 						<li>Enter letters using keyboard.</li>
-						<li>For hints, click 'Hint' button.</li>
-						<li>Be warned: Using 'Hint' in 'Easy' mode reduces remaining guesses by 1.</li>
+						<li>Using 'Hint' in 'Easy' mode reduces remaining guesses by 1.</li>
 						<li>To reset game, click 'Reset'</li>
-					</ol>
+					</ul>
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="row gameMode text-center">
+				<div class="gameMode text-center">
 					<button class="btn btn-info btn-large easy">Easy Mode</button>
 					<button class="btn btn-info btn-large hard">Hard Mode</button>
 				</div>
 			</div>
-			<div class="col-md-3 text-center">
+			<div class="col-md-3 col-md-offset-1 text-center">
 				<button class="btn btn-info btn-large reset">Reset</button>
 			</div>
 		</div>
@@ -74,27 +73,35 @@
 		</div>
 		
 		<!-- Provision for hints -->
-		<div class="row hintdefault text-center">
-			<div class="col-md-12">
-				<div class="control">
+		<div class="row hintAndInfo text-center">
+			<div class="col-md-6">
+				<div>
 					<button class="btn btn-info btn-large hint" data-toggle="collapse" data-target="#hint">Hint</button>
 				</div>
-				<div id="hint" class="collapse img-rounded">
-					<p></p>
+				<div class="row">
+					<div class="col-md-6">
+						<div id="hintDiv" class="collapse img-rounded text-center"></div>
+					</div>
+					<!-- Info about game stat -->
+					<div class="col-md-6">
+						<div id="info" class="img-rounded text-center"></div>
+					</div>
 				</div>
 			</div>
 		</div>
 		
-		<!-- Info about game stat -->
+		
+		<!-- <div class="row">
+			
+		</div>
+ -->
+		<!-- Slide down alert for invalid input -->
 		<div class="row">
-			<div id="info" class="col-md-12 img-rounded text-center"></div>
+			<div class="col-md-6 col-md-offset-3 alert img-rounded text-center">
+				<p id="alertText"></p>
+			</div>
+			<div class="col-md-3"></div>
 		</div>
-
-		<!-- Sliding notification for invalid input -->
-		<div class="message img-rounded text-center">
-			<p id="alert"></p>
-		</div>
-
 		<!-- TODO
 	 	Check background and sizes again to fit everything without window scroll
 	 	Fix Hint collapse guesses reduction bug
