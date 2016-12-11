@@ -1,40 +1,40 @@
 // *** Variable declarations ***
 
-var wordObjectEasy = {
+var wordObjectEasy = {                                                                      // object of arrays (for additional content on keys)
 // if required, use key instead of traversing to the 0th element for getting currentWord
-    "mutant" 		: [ "pic2.jpg", "When evolution skips ahead"],
-    "sentinel" 		: [ "pic3.jpg", "'Targeting systems locked. Terminate all units.'"],
-    "wolverine" 	: [ "pic3.jpg", "'You caged the wrong animal. Bub.'"],
-    "cyclops" 		: [ "pic3.jpg", "This guy's the leader in comics but so not in the movies."],
-    "magneto"		: [ "pic3.jpg", "'Peace was never an option.'"],
-    "juggernaut"	: [ "pic3.jpg", "Never stopping once started"],
-    "adamantium"	: [ "pic3.jpg", "Think claws"],
-    "mystique"		: [ "pic3.jpg", "Is she the Good guy, or the Bad guy? You choose."],
-    "sabretooth"	: [ "pic3.jpg", "Named after a extinct animal"],
-    "jean grey"		: [ "pic3.jpg", "'Live, Scott. Live.'"],
-    "professor x"	: [ "pic3.jpg", "'The solo last letter in this word is the first letter of the game's theme."],
-    "beast"			: [ "pic3.jpg", "Intelligent and strong"],
-    "nightcrawler"	: [ "pic3.jpg", "He goes up in a puff of black smoke to any place he can see."],
-    "telepathy"		: [ "pic3.jpg", "Helps in reading people's thoughts"],
-    "telekinesis"	: [ "pic3.jpg", "Moving objects with the mind"],
-    "phoenix"		: [ "pic3.jpg", "An omega level mutant. Cosmic power incarnate."]
+    "mutant" 		: ["When evolution skips ahead"],
+    "sentinel" 		: ["'Targeting systems locked. Terminate all units.'"],
+    "wolverine" 	: ["'You caged the wrong animal. Bub.'"],
+    "cyclops" 		: ["This guy's the leader in comics but so not in the movies."],
+    "magneto"		: ["'Peace was never an option.'"],
+    "juggernaut"	: ["Never stopping once started"],
+    "adamantium"	: ["Think claws"],
+    "mystique"		: ["Is she the Good guy, or the Bad guy? You choose."],
+    "sabretooth"	: ["Named after a extinct animal"],
+    "jean grey"		: ["'Live, Scott. Live.'"],
+    "professor x"	: ["'The solo last letter in this word is the first letter of the game's theme."],
+    "beast"			: ["Intelligent and strong"],
+    "nightcrawler"	: ["He goes up in a puff of black smoke to any place he can see."],
+    "telepathy"		: ["Helps in reading people's thoughts"],
+    "telekinesis"	: ["Moving objects with the mind"],
+    "phoenix"		: ["An omega level mutant. Cosmic power incarnate."]
 };
 
-var wordObjectHard = {
-    "phoenix force"	: [ "pic3.jpg", "Immortal mutable cosmic entity"],
-    "hank mccoy"	: [ "pic3.jpg", "He doesn't need to get angry to be big and blue."],
-    "teleportation"	: [ "pic3.jpg", "If you're stuck in traffic, you'd be thinking of having this power."],
-    "emma frost"	: [ "pic3.jpg", "White queen"],
-    "archangel"		: [ "pic3.jpg", "Wings"],
-    "james logan"	: [ "pic3.jpg", "'You actually go outside in these things?'"],
-    "scott summers"	: [ "pic3.jpg", "'What would you prefer? Yellow spandex?'"],
-    "soulsword"		: [ "pic3.jpg", "Emobiment of Illyana's power and her 'soul'"],
-    "ororo munroe"	: [ "pic3.jpg", "Someone's real name. Say it right or she'll make it rain."],
-    "kurt wagner"	: [ "pic3.jpg", "Other name for the nightcrawler"],
-    "kitty pryde"	: [ "pic1.jpg", "This name has relation to these words - kitten, lion pride"],
-    "eric lehnsherr": [ "pic1.jpg", "His name before he founded the Brotherhood of Mutants."],
-    "raven"			: [ "pic1.jpg", "The name Charles called her"],
-    "marvel girl"	: [ "pic1.jpg", "Another alias for the omega level version of Jean Grey"]
+var wordObjectHard = {                                                                        // object of arrays (for additional content on keys)
+    "phoenix force"	: ["Immortal mutable cosmic entity"],
+    "hank mccoy"	: ["He doesn't need to get angry to be big and blue."],
+    "teleportation"	: ["If you're stuck in traffic, you'd be thinking of having this power."],
+    "emma frost"	: ["White queen"],
+    "archangel"		: ["Wings"],
+    "james logan"	: ["'You actually go outside in these things?'"],
+    "scott summers"	: ["'What would you prefer? Yellow spandex?'"],
+    "soulsword"		: ["Emobiment of Illyana's power and her 'soul'"],
+    "ororo munroe"	: ["Someone's real name. Say it right or she'll make it rain."],
+    "kurt wagner"	: ["Other name for the nightcrawler"],
+    "kitty pryde"	: ["This name has relation to these words - kitten, lion pride"],
+    "eric lehnsherr": ["His name before he founded the Brotherhood of Mutants."],
+    "raven"			: ["The name Charles called her"],
+    "marvel girl"	: ["Another alias for the omega level version of Jean Grey"]
 };
 
 // array to store indices of wordObject
@@ -99,9 +99,9 @@ $(document).ready(function(event) {
     $(".hint").on("click", function(){
     	$("#hintResetSound")[0].play();
     	if(hardMode) {
-    		$("#hintDiv").html(wordObjectHard[currentWord][1]);
+    		$("#hintDiv").html(wordObjectHard[currentWord][0]);
     	}else {
-			$("#hintDiv").html(wordObjectEasy[currentWord][1]);
+			$("#hintDiv").html(wordObjectEasy[currentWord][0]);
 			if(!hintUsedForCurrentWord){
 				guessesLeft--;
 			}
