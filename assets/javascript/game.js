@@ -68,31 +68,37 @@ $(document).ready(function(event) {
     // Changing game mode to Easy
     $(".easy").on("click", function() {
     	$("#modeChangeSound")[0].play();
+        $("#info").queue(function(){
+            if(hardMode){
+               $("#info").html("Mode change detected"); 
+            }
+            setTimeout(function(){$("#info").html("Game mode: Easy")}, 1500);
+            $("#info").dequeue();
+        });
         hardMode = false;
         reset();
         getWordArray();
         lettersOfWordArray = getNewWord();
         showBlank(lettersOfWordArray);
-        $("#info").queue(function(){
-			$("#info").html("Mode change detected");
-			setTimeout(function(){$("#info").html("Game mode: 'Easy'")}, 1500);
-			$("#info").dequeue();
-		});
+        
     });
 
     // Changing game mode to Hard
     $(".hard").on("click", function() {
     	$("#modeChangeSound")[0].play();
+        $("#info").queue(function(){
+           if(!hardMode){
+               $("#info").html("Mode change detected"); 
+            }
+            setTimeout(function(){$("#info").html("Game mode: Hard")}, 1500);
+            $("#info").dequeue();
+        });
         hardMode = true;
         reset();
         getWordArray();
         lettersOfWordArray = getNewWord();
         showBlank(lettersOfWordArray);
-        $("#info").queue(function(){
-			$("#info").html("Mode change detected");
-			setTimeout(function(){$("#info").html("Game mode: 'Hard'")}, 1500);
-			$("#info").dequeue();
-		});
+      
     });
 
     // Getting hints on Hint button click
