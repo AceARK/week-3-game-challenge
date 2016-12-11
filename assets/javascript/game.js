@@ -309,6 +309,8 @@ function reset() {
     usedLettersArray = [];
     currentWord = "";
     hintUsedForCurrentWord = "";
+    $("#hintDiv").html("");
+    $("#hintDiv").collapse("hide");
     $(".hint").prop('disabled', false);
     $("#guessedLetters").html(usedLettersArray.toString().toUpperCase());
     $("#guessesLeft").html(guessesLeft);
