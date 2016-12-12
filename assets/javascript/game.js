@@ -12,7 +12,7 @@ var wordObjectEasy = {                                                          
     "mystique"		: ["Is she the Good guy, or the Bad guy? You choose."],
     "sabretooth"	: ["Named after a extinct animal"],
     "jean grey"		: ["'Live, Scott. Live.'"],
-    "professor x"	: ["'The solo last letter in this word is the first letter of the game's theme."],
+    "professor x"	: ["The solo last letter in this word is the first letter of the game's theme."],
     "beast"			: ["Intelligent and strong"],
     "nightcrawler"	: ["He goes up in a puff of black smoke to any place he can see."],
     "telepathy"		: ["Helps in reading people's thoughts"],
@@ -32,9 +32,10 @@ var wordObjectHard = {                                                          
     "ororo munroe"	: ["Someone's real name. Say it right or she'll make it rain."],
     "kurt wagner"	: ["Other name for the nightcrawler"],
     "kitty pryde"	: ["This name has relation to these words - kitten, lion pride"],
-    "eric lehnsherr": ["His name before he founded the Brotherhood of Mutants."],
+    "erik lehnsherr": ["His name before he founded the Brotherhood of Mutants."],
     "raven"			: ["The name Charles called her"],
-    "marvel girl"	: ["Another alias for the omega level version of Jean Grey"]
+    "marvel girl"	: ["Another alias for the omega level version of Jean Grey"],
+    "dark phoenix"  : ["Manifestation of the suppressed evil in jean grey"] 
 };
 
 // array to store indices of wordObject
@@ -46,6 +47,7 @@ var guessesLeft = 8;
 var wins = 0;
 var losses = 0;
 var currentWord = "";
+var wordsUsedInCurrentSession = [];
 var wordArrayIndex = 0;
 const alphabets = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var lettersOfWordArray = [];
@@ -68,6 +70,7 @@ $(document).ready(function(event) {
     // Changing game mode to Easy
     $(".easy").on("click", function() {
     	$("#modeChangeSound")[0].play();
+        wordsUsedInCurrentSession = [];
         $("#info").queue(function(){
             if(hardMode){
                $("#info").html("Mode change detected"); 
@@ -86,6 +89,7 @@ $(document).ready(function(event) {
     // Changing game mode to Hard
     $(".hard").on("click", function() {
     	$("#modeChangeSound")[0].play();
+        wordsUsedInCurrentSession = [];
         $("#info").queue(function(){
            if(!hardMode){
                $("#info").html("Mode change detected"); 
@@ -119,6 +123,7 @@ $(document).ready(function(event) {
 	// Reset game on Reset button click
 		$(".reset").on("click", function(){
 			$("#hintResetSound")[0].play();
+            wordsUsedInCurrentSession = [];
 			reset();
 			wins = 0;
 			$("#wins").html(wins);
@@ -212,6 +217,9 @@ $(document).ready(function(event) {
                  
                     $("#wins").html(wins);
                     $("#winSound")[0].play();
+                    $("#wordImage").attr("src","assets/images/wordimages/"+currentWord+".jpg");
+                    $("#imageName").html(currentWord);
+                    $("#wordImage").fadeIn(400);
                     $("#info").queue(function(){
 						$("#info").html("You win");
 						setTimeout(function(){$("#info").html("New word updated")}, 1500);
@@ -315,6 +323,8 @@ function reset() {
     usedLettersArray = [];
     currentWord = "";
     hintUsedForCurrentWord = "";
+    $("#wordImage").fadeOut(4000);
+    setTimeout(function(){$("#imageName").html("")}, 4000);
     $("#hintDiv").html("");
     $("#hintDiv").collapse("hide");
     $(".hint").prop('disabled', false);
@@ -326,6 +336,13 @@ function reset() {
 function getNewWord() {
     wordArrayIndex = Math.floor(Math.random() * wordArray.length);
     currentWord = wordArray[wordArrayIndex];
+    // To get rid of repetitive words in current gaming session
+    while(wordsUsedInCurrentSession.indexOf(wordArray[wordArrayIndex]) != -1){
+        console.log("Random duplicate detected");
+        wordArrayIndex = Math.floor(Math.random() * wordArray.length);
+    }
+    currentWord = wordArray[wordArrayIndex];
+    wordsUsedInCurrentSession.push(currentWord);
     var lettersOfWordArray = Array.from(currentWord); // converting current word to array for rest of code (Code snippet #6)
     return lettersOfWordArray;
 }
@@ -343,18 +360,6 @@ function showBlank(lettersOfWordArray) {
 
 }
 
-// Code snippet #2 -> Updating wins, losses and guessesLeft to html
-function printGuessesLeft(guessesLeft) {
-    $("#guessesLeft").html(guessesLeft);
-}
-
-function printWins(wins) {
-    $("#wins").html(wins);
-}
-
-function printLosses(losses) {
-    $("#losses").html(losses);
-}
 
 // To display partial word 
 function replaceBlank(blankWord, index, letter) {
