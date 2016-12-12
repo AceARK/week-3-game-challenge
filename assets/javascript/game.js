@@ -157,6 +157,7 @@ $(document).ready(function(event) {
     // Accepting user input
     document.onkeyup = function(event) {
     	// Play sound on key input
+        $("#keyPressSound")[0].currentTime = 0;
     	$("#keyPressSound")[0].play();
     	// Hide any text from previous input or event
       	$(".alert").hide();
