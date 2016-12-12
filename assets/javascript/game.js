@@ -34,7 +34,7 @@ var wordObjectHard = {                                                          
     "kitty pryde"	: ["This name has relation to these words - kitten, lion pride"],
     "erik lehnsherr": ["His name before he founded the Brotherhood of Mutants."],
     "raven"			: ["The name Charles called her"],
-    "marvel girl"	: ["Another alias for the omega level version of Jean Grey"],
+    "marvel girl"	: ["Jean Grey before she fused with the phoenix force"],
     "dark phoenix"  : ["Manifestation of the suppressed evil in jean grey"] 
 };
 
@@ -325,6 +325,7 @@ function reset() {
     hintUsedForCurrentWord = "";
     $("#wordImage").fadeOut(4000);
     setTimeout(function(){$("#imageName").html("")}, 4000);
+    $("wordImage").attr("src","");
     $("#hintDiv").html("");
     $("#hintDiv").collapse("hide");
     $(".hint").prop('disabled', false);
