@@ -61,6 +61,7 @@ $(document).ready(function(event) {
 
 	// Play sound for x doors sliding
 	$(".cover").mouseenter(function() {
+        $("#xDoorSliding")[0].currentTime = 0;
 		setTimeout(function(){$("#xDoorSliding")[0].play()}, 1900);
 	});
 
@@ -69,6 +70,7 @@ $(document).ready(function(event) {
 
     // Changing game mode to Easy
     $(".easy").on("click", function() {
+        $("#modeChangeSound")[0].currentTime = 0;
     	$("#modeChangeSound")[0].play();
         wordsUsedInCurrentSession = [];
         $("#info").queue(function(){
@@ -88,6 +90,7 @@ $(document).ready(function(event) {
 
     // Changing game mode to Hard
     $(".hard").on("click", function() {
+        $("#modeChangeSound")[0].currentTime = 0;
     	$("#modeChangeSound")[0].play();
         wordsUsedInCurrentSession = [];
         $("#info").queue(function(){
@@ -107,6 +110,7 @@ $(document).ready(function(event) {
 
     // Getting hints on Hint button click
     $(".hint").on("click", function(){
+        $("#hintResetSound")[0].currentTime = 0;
     	$("#hintResetSound")[0].play();
     	if(hardMode) {
     		$("#hintDiv").html(wordObjectHard[currentWord][0]);
@@ -122,6 +126,7 @@ $(document).ready(function(event) {
 
 	// Reset game on Reset button click
 		$(".reset").on("click", function(){
+            $("#hintResetSound")[0].currentTime = 0;
 			$("#hintResetSound")[0].play();
             wordsUsedInCurrentSession = [];
 			reset();
