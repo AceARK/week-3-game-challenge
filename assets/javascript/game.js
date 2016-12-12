@@ -325,7 +325,7 @@ function reset() {
     hintUsedForCurrentWord = "";
     $("#wordImage").fadeOut(4000);
     setTimeout(function(){$("#imageName").html("")}, 4000);
-    $("wordImage").attr('src', 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABA‌​AACAUwAOw==');
+    $("#wordImage").attr("src", "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABA‌​AACAUwAOw==");
     $("#hintDiv").html("");
     $("#hintDiv").collapse("hide");
     $(".hint").prop('disabled', false);
