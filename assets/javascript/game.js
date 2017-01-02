@@ -48,6 +48,7 @@ var wins = 0;
 var losses = 0;
 var currentWord = "";
 var wordsUsedInCurrentSession = [];
+var temperoryCurrentWord = "";
 var wordArrayIndex = 0;
 const alphabets = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var lettersOfWordArray = [];
@@ -61,7 +62,7 @@ $(document).ready(function(event) {
 
 	// Play sound for x doors sliding
 	$(".cover").mouseenter(function() {
-        $("#xDoorSliding")[0].currentTime = 0;
+        $("#xDoorSliding")[0].currentTime = 0; // document.getElementByID("id") = $("#id")[0]
 		setTimeout(function(){$("#xDoorSliding")[0].play()}, 1900);
 	});
 
@@ -269,17 +270,23 @@ $(document).ready(function(event) {
                 if (guessesLeft === 0) {
                   
                     losses++;
-                  
                     $("#losses").html(losses);
                     $("#loseSound")[0].play();
                     $("#info").queue(function(){
 						$("#info").html("You lose");
-						setTimeout(function(){$("#info").html("New word updated")}, 1000);
+                        if(wordsUsedInCurrentSession.length != 1){
+                            setTimeout(function(){$("#info").html("The word was: " + wordsUsedInCurrentSession[wordsUsedInCurrentSession.length-2].toUpperCase())}, 1000)
+
+                        }
+                        else{
+                            setTimeout(function(){$("#info").html("The word was: " + wordsUsedInCurrentSession[0].toUpperCase())}, 1000)
+                        }
+						setTimeout(function(){$("#info").html("New word updated")}, 2000);
 						if(hardMode){
-							setTimeout(function(){$("#info").html("Game mode: Hard")}, 2500);
+							setTimeout(function(){$("#info").html("Game mode: Hard")}, 3000);
 						}
 						else {
-							setTimeout(function(){$("#info").html("Game mode: Easy")}, 2500);
+							setTimeout(function(){$("#info").html("Game mode: Easy")}, 3000);
 						}
 						$("#info").dequeue();
 					});

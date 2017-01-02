@@ -11,7 +11,7 @@ body {
 	color: white;
 	font-size: 20px;
 	font-family: 'Orbitron', sans-serif;
-	overflow: hidden;
+	overflow: auto;
 	color: white;
 }
 
@@ -296,8 +296,6 @@ img {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-
-
 
 @media screen and (max-width: 1550px) {
 	h1 {
