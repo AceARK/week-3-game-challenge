@@ -125,6 +125,10 @@ $(document).ready(function(event) {
     	}
 	});
 
+    $(".hint").on("blur", function(){
+        $("#hintDiv").collapse("hide");
+    })
+
 	// Reset game on Reset button click
 		$(".reset").on("click", function(){
             $("#hintResetSound")[0].currentTime = 0;
@@ -167,6 +171,8 @@ $(document).ready(function(event) {
     	$("#keyPressSound")[0].play();
     	// Hide any text from previous input or event
       	$(".alert").hide();
+        // If hint Div is open, close it too
+        $("#hintDiv").collapse("hide");
         var userInput = String.fromCharCode(event.keyCode).toLowerCase();
 
         // Not allowing invalid characters or numbers
