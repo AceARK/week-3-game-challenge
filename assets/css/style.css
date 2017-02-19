@@ -392,11 +392,10 @@ img {
 
 	.ruleSet {
 		margin-top: 10px;
-		font-size: 20px;
+		font-size: 18px;
 		margin-left: 35px;
 		line-height: 18px;
 		font-weight: 500;
-		color: white; text-shadow: black 0.1em 0.1em 0.2em;
 	}
 
 	.gameMode {
@@ -483,17 +482,12 @@ img {
 
 
 	.alert {
-		background-color: #379ee8;
-		background-image: url("../images/bluemetalbg.jpg");
-		background-size: 100% 100%;
-		background-repeat: no-repeat;
-		color: white;
-		opacity: 0.9;
-		display: none;
-		border: 5px solid white;
-	    position: absolute;
-	    top: 0;
-	    width: 1000px;
-	    height: 250px;
+	    width: 700px;
+	    height: 200px;
+	}
+
+	#alertText {
+	    padding-top: 60px;
+	    font-size: 25px;
 	}
 }
