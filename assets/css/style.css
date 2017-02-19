@@ -47,6 +47,15 @@ h1 {
 	font-size: 80px;
 	font-weight: 800;
 	color: white; text-shadow: black 0.1em 0.1em 0.2em;
+	margin-bottom: 0px;
+	position: relative;
+}
+
+#copyright {
+	position: absolute;
+	bottom: 20px;
+	right: 10%;
+	font-size: 12px;
 }
 
 #heading {
